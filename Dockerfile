@@ -21,9 +21,9 @@ RUN yarn && \
     rm -rf * && \
     cd /home/default/theia && \
     yarn && \
-    yarn theia build && \
-    ln -s /home/default/theia/node_modules /home/theia/node_modules && \
-    ln -s /home/default/theia/yarn.lock /home/theia/yarn.lock
+    yarn theia build
+RUN ln -sf /home/default/theia/node_modules /home/theia/node_modules
+RUN ln -sf /home/default/theia/yarn.lock /home/theia/yarn.lock
 
 # ENV LOCAL_NPM_REGISTRY=http://${your.local.ip}:4873/
 ADD src/yarnrcGenerator.sh /theia_launcher/yarnrcGenerator.sh
